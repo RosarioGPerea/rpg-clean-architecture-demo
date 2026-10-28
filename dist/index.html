@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Equipamiento RPG - Arquitectura Decorator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=MedievalSharp&family=Metamorphous&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/index-CS2PGkgK.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CDBuHmfc.css">
+</head>
+<body>
+  <div id="app" class="rpg-app">
+    <!-- Header -->
+    <header class="rpg-header">
+      <div class="rpg-logo">
+        <span class="logo-icon">⚔️</span>
+        <div>
+          <h1>FORJA Y SIMULADOR DE HÉROES</h1>
+          <p class="subtitle">Demostración de Patrón Decorator & Clean Architecture</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="rpg-container">
+      <!-- Panel Izquierdo: Selección de Clase & Creación -->
+      <section class="panel panel-creation">
+        <h2 class="panel-title"><span class="icon">👤</span> 1. Elegir Personaje</h2>
+        
+        <div class="form-group">
+          <label for="char-name">Nombre del Héroe:</label>
+          <input type="text" id="char-name" value="Arthas el Valiente" maxlength="20" />
+        </div>
+
+        <div class="class-selector">
+          <button type="button" class="class-btn active" data-class="warrior">
+            <span class="class-icon">🛡️</span>
+            <span class="class-name">Guerrero</span>
+            <span class="class-desc">Alto HP y Defensa</span>
+          </button>
+          <button type="button" class="class-btn" data-class="mage">
+            <span class="class-icon">🔮</span>
+            <span class="class-name">Mago</span>
+            <span class="class-desc">Alto MP y Poder Arcano</span>
+          </button>
+          <button type="button" class="class-btn" data-class="rogue">
+            <span class="class-icon">🗡️</span>
+            <span class="class-name">Pícaro</span>
+            <span class="class-desc">Alta Vel. y Ataque Crítico</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Panel Central: Vista del Personaje & Slots Equipados -->
+      <section class="panel panel-character">
+        <h2 class="panel-title"><span class="icon">📜</span> Ficha del Héroe</h2>
+        <div id="character-card-container">
+          <!-- Renderizado dinámico desde CharacterView.ts -->
+        </div>
+      </section>
+
+      <!-- Panel Derecho: Equipamiento y Estados Alterados -->
+      <section class="panel panel-inventory">
+        <h2 class="panel-title"><span class="icon">🧰</span> 2. Modificadores (Decoradores)</h2>
+        
+        <div class="inventory-tabs">
+          <button class="tab-btn active" data-tab="weapons">⚔️ Armas</button>
+          <button class="tab-btn" data-tab="armors">🛡️ Armaduras</button>
+          <button class="tab-btn" data-tab="buffs">✨ Buffs</button>
+          <button class="tab-btn" data-tab="debuffs">☠️ Debuffs</button>
+        </div>
+
+        <div id="inventory-content" class="inventory-content">
+          <!-- Renderizado dinámico desde InventoryView.ts -->
+        </div>
+
+        <div class="decorator-chain-panel">
+          <h3><span class="icon">🔗</span> Cadena de Decoradores Activa</h3>
+          <div id="decorator-chain-list" class="decorator-chain-list">
+            <!-- Muestra la pila de decoradores envueltos sobre ICharacter -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rpg-footer">
+      <p>Clean Architecture + TypeScript Vanilla | Patrón Decorator (GoF)</p>
+    </footer>
+  </div>
+
+</body>
+</html>
